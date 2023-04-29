@@ -2,11 +2,8 @@ var trex, trex_running, trex_collided;
 var ground, invisibleGround, groundImage;
 
 var cloud, cloudsGroup, cloudImage;
-var obstaclesGroup, obstacle1, obstacle2, obstacle3, obstacle4, obstacle5, obstacle6;
-
-var score;
-
-
+var obstaclesGroup, obstacle1, obstacle2, obstacle3, obstacle4, obstacle5, obstacle6; //adicionar
+var score; //adicionar
 function preload(){
   trex_running = loadAnimation("trex1.png","trex3.png","trex4.png");
   trex_collided = loadAnimation("trex_collided.png");
@@ -15,12 +12,12 @@ function preload(){
   
   cloudImage = loadImage("cloud.png");
   
-  obstacle1 = loadImage("obstacle1.png");
-  obstacle2 = loadImage("obstacle2.png");
-  obstacle3 = loadImage("obstacle3.png");
-  obstacle4 = loadImage("obstacle4.png");
-  obstacle5 = loadImage("obstacle5.png");
-  obstacle6 = loadImage("obstacle6.png");
+  obstacle1 = loadImage("obstacle1.png"); //adicionar
+  obstacle2 = loadImage("obstacle2.png"); //adicionar
+  obstacle3 = loadImage("obstacle3.png"); //adicionar
+  obstacle4 = loadImage("obstacle4.png"); //adicionar
+  obstacle5 = loadImage("obstacle5.png"); //adicionar
+  obstacle6 = loadImage("obstacle6.png"); //adicionar
   
 }
 
@@ -40,16 +37,13 @@ function setup() {
   invisibleGround = createSprite(200,190,400,10);
   invisibleGround.visible = false;
   
-  console.log("Hello" + 5);
-  
-  score = 0;
+  score = 0;  //adicionar
 }
 
 function draw() {
   background(180);
-  text("Score: "+ score, 500,50);
-  score = score + Math.round(frameCount/60);
-  
+  text("Pontos: " + score, 500,50);  //adicionar
+  score = score + Math.round(frameCount/60); //adicionar
   
   if(keyDown("space")&& trex.y >= 100) {
     trex.velocityY = -13;
@@ -67,17 +61,15 @@ function draw() {
   spawnClouds();
   
   //gerar obstáculos no chão
-  spawnObstacles();
+  spawnObstacles();  //adicionar
   
   drawSprites();
 }
 
-function spawnObstacles(){
+function spawnObstacles(){ //adicionar
  if (frameCount % 60 === 0){
    var obstacle = createSprite(400,165,10,40);
-   obstacle.velocityX = -6;
-
-   
+   obstacle.velocityX = -6; 
     // gerar obstáculos aleatórios
     var rand = Math.round(random(1,6));
     switch(rand) {
@@ -94,13 +86,12 @@ function spawnObstacles(){
       case 6: obstacle.addImage(obstacle6);
               break;
       default: break;
-    }
-   
+    } //adicionar
     //atribuir dimensão e tempo de vida ao obstáculo           
     obstacle.scale = 0.5;
     obstacle.lifetime = 300;
- }
-}
+ }//adicionar
+}//adicionar
 
 
 
@@ -115,7 +106,7 @@ function spawnClouds() {
     cloud.velocityX = -3;
     
      //atribua tempo de vida à variável
-    cloud.lifetime = 200;
+    cloud.lifetime = 200; //adicionar
     
     //ajuste a profundidade
     cloud.depth = trex.depth;
